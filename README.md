@@ -4,7 +4,10 @@ Test challenge for [Lodgify](https://www.googleadservices.com/pagead/aclk?sa=L&a
 
 ## Instructions
 
-- Please use `$ npm run dev` to start dev server
+Before start working on project please install dependencies with `$ npm install`\
+In case of error try to update `Node.js` to the latests LTS version
+
+- Please use `$ npm run dev` to start dev server, it will starts the server on [localhost:3000](http://localhost:3000/)
 - Please use `$ npm run build` to prepare production ready bundle
 - Please use `$ npm run lint` to run eslint and check the source code with eslint rules
 - Please use `$ npm run lint:fix` to auto fix eslint errors
