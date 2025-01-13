@@ -10,11 +10,15 @@ import '@fontsource/source-sans-3/400.css';
 import '@fontsource/source-sans-3/500.css';
 import '@fontsource/source-sans-3/700.css';
 
+import Widget from '@/layouts/Widget/Widget';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <main>Content</main>
+      <main>
+        <Widget />
+      </main>
     </ThemeProvider>
   );
 }
