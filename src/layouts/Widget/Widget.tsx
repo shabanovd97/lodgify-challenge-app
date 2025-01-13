@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
+import ProgressBar from '@/components/ProgressBar/ProgressBar';
+
 import { calculateProgress } from '@/utils/progress-helpers';
 import { GET_TASK_GROUPS_URL } from '@/constants';
 import { Task, TaskGroup } from '@/types/tasks-types';
@@ -70,7 +72,7 @@ export default function Widget() {
     <section>
       <header>
         <h1>Lodgify Grouped Tasks</h1>
-        <div>{`Progress bar - completed ${progress}%`}</div>
+        <ProgressBar progress={progress} />
       </header>
       <main>
         {tasks.map((taskGroup) => (

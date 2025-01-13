@@ -3,6 +3,10 @@ export const theme = {
     primary: '#02BC9C',
     secondary: '#999999',
     text: '#333333',
+    white: '#FFFFFF',
+    lightGrey: '#F2FBFA',
+    lightGreen: '#E6FDF9',
+    grey: '#CCCCCC',
   },
   fonts: {
     primary: "'Source Sans 3', Arial, sans-serif",
@@ -13,7 +17,6 @@ export const theme = {
     large: '24px',
   },
   lineHeights: {
-    small: '20px',
     normal: '24px',
     medium: '28px',
     large: '32px',
