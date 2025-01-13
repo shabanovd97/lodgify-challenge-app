@@ -1,4 +1,4 @@
-import { TaskGroup } from '@/api/tasks';
+import { TaskGroup } from '@/types/tasks-types';
 
 export function calculateTasksSum(tasks: TaskGroup[], checked: boolean) {
   const tasksValuesSum = tasks.reduce((acc, taskGroup) => {
@@ -20,5 +20,5 @@ export function calculateProgress(tasks: TaskGroup[]) {
   const tasksValuesSum = calculateTasksSum(tasks, false);
   const tasksCheckedSum = calculateTasksSum(tasks, true);
 
-  return Math.round((tasksCheckedSum * 100) / tasksValuesSum);
+  return Math.round((tasksCheckedSum * 100) / tasksValuesSum) || 0;
 }

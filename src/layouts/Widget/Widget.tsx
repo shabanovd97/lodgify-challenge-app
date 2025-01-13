@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { fetchTaskGroups, TaskGroup } from '@/api/tasks';
 import { calculateProgress } from '@/utils/progress-helpers';
+import { GET_TASK_GROUPS_URL } from '@/constants';
+import { Task, TaskGroup } from '@/types/tasks-types';
 
 export default function Widget() {
   const [loading, setLoading] = useState(false);
@@ -9,10 +10,53 @@ export default function Widget() {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    fetchTaskGroups(setTasks, setLoading, setError);
+    async function fetchTasks() {
+      setLoading(true);
+
+      try {
+        const response = await fetch(GET_TASK_GROUPS_URL);
+        const data = await response.json();
+
+        setTasks(data);
+      } catch (error) {
+        setError(
+          new Error(
+            'An error occurred while fetching the tasks. Please try again later.'
+          )
+        );
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchTasks();
   }, []);
 
   const progress = useMemo(() => calculateProgress(tasks), [tasks]);
+
+  function handelCheckboxChange(selectedTask: Task) {
+    const updatedTaskGroups = tasks.map((taskGroup) => {
+      const updatedTasks = taskGroup.tasks.map((currentTask) => {
+        // while we haven't unique keys, and assuming that descriptions are unique -> we can search tasks by description
+        if (currentTask.description === selectedTask.description) {
+          return {
+            ...currentTask,
+            checked: !currentTask.checked,
+          };
+        }
+
+        return currentTask;
+      });
+
+      return {
+        ...taskGroup,
+        tasks: updatedTasks,
+      };
+    });
+
+    setTasks(updatedTaskGroups);
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -38,7 +82,7 @@ export default function Widget() {
                   <input
                     type="checkbox"
                     checked={task.checked}
-                    onChange={() => {}}
+                    onChange={() => handelCheckboxChange(task)}
                   />
                   <label>{task.description}</label>
                 </li>
