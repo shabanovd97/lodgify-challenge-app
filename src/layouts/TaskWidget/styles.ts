@@ -5,7 +5,7 @@ export const Layout = styled.article`
   margin-top: ${({ theme }) => theme.spacing(3.25)};
   padding: ${({ theme }) => theme.spacing(2)};
   width: 80%;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.primaryBorder};
   border-radius: ${({ theme }) => theme.spacing(1)};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.primaryBackground};
 `;

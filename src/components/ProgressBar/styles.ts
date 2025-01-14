@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ProgressBarWrapper = styled.div`
   width: 100%;
   height: ${({ theme }) => theme.spacing(3)};
-  background-color: ${({ theme }) => theme.colors.lightGreen};
+  background-color: ${({ theme }) => theme.colors.lightPrimary};
   border-radius: ${({ theme }) => theme.spacing(3)};
   overflow: hidden;
 `;
@@ -27,5 +27,5 @@ export const Progress = styled.div<{ percentage: number }>`
 
 export const ProgressText = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
-  color: ${({ theme }) => theme.colors.lightGrey};
+  color: ${({ theme }) => theme.colors.lightPrimaryText};
 `;

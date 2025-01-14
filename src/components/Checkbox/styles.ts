@@ -24,7 +24,7 @@ export const CheckboxStyledInput = styled.div<{ checked: boolean }>`
   width: ${({ theme }) => theme.spacing(2)};
   height: ${({ theme }) => theme.spacing(2)};
   border: ${({ checked, theme }) =>
-    `1px solid ${checked ? theme.colors.primary : theme.colors.secondary}`};
+    `1px solid ${checked ? theme.colors.primary : theme.colors.lightSecondaryText}`};
   border-radius: ${({ theme }) => theme.spacing(0.5)};
   background-color: ${({ checked, theme }) =>
     checked ? theme.colors.primary : 'transparent'};
@@ -37,13 +37,13 @@ export const CheckboxStyledInput = styled.div<{ checked: boolean }>`
     margin-top: -2px; // Centering the checkmark according to the Mockup
     width: ${({ theme }) => theme.spacing(1.1)};
     height: ${({ theme }) => theme.spacing(0.7)};
-    border-left: ${({ theme }) => `1px solid ${theme.colors.white}`};
-    border-bottom: ${({ theme }) => `1px solid ${theme.colors.white}`};
+    border-left: ${({ theme }) => `1px solid ${theme.colors.primaryBackground}`};
+    border-bottom: ${({ theme }) => `1px solid ${theme.colors.primaryBackground}`};
     rotate: -45deg;
     box-sizing: border-box;
   }
 `;
 
 export const CheckboxLabel = styled.span`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
