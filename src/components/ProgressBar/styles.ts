@@ -19,6 +19,7 @@ export const Progress = styled.div<{ percentage: number }>`
   height: ${({ theme }) => theme.spacing(3)};
   background-color: ${({ theme }) => theme.colors.primary};
   border-radius: ${({ theme }) => theme.spacing(3)};
+  box-sizing: border-box;
   transition:
     width 0.5s ease-in-out,
     padding 0.5s ease-in-out;

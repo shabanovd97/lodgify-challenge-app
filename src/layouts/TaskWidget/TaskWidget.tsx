@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import ProgressBar from '@/components/ProgressBar/ProgressBar';
-import Checkbox from '@/components/Checkbox/Checkbox';
+// import Accordion from '@/components/Accordion/Accordion';
+import Header from './Header/Header';
+import Content from './Content/Content';
 
-import { calculateProgress, isGroupCompleted } from '@/utils/progress-helpers';
+import { Layout } from './styles';
+
+import { calculateProgress } from '@/utils/progress-helpers';
 import { GET_TASK_GROUPS_URL } from '@/constants';
 import { Task, TaskGroup } from '@/types/tasks-types';
 
-export default function Widget() {
+export default function TaskWidget() {
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState<TaskGroup[]>([]);
   const [error, setError] = useState<Error | null>(null);
@@ -70,30 +73,9 @@ export default function Widget() {
   }
 
   return (
-    <section>
-      <header>
-        <h1>Lodgify Grouped Tasks</h1>
-        <ProgressBar progress={progress} />
-      </header>
-      <main>
-        {tasks.map((taskGroup) => (
-          <section key={taskGroup.name}>
-            <h2>{taskGroup.name}</h2>
-            <p>{`isCompleted: ${isGroupCompleted(taskGroup)}`}</p>
-            <ul>
-              {taskGroup.tasks.map((task) => (
-                <li key={task.description}>
-                  <Checkbox
-                    label={task.description}
-                    checked={task.checked}
-                    onChange={() => handelCheckboxChange(task)}
-                  />
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </main>
-    </section>
+    <Layout>
+      <Header progress={progress} />
+      <Content tasks={tasks} onChangeTask={handelCheckboxChange} />
+    </Layout>
   );
 }

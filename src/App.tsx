@@ -10,8 +10,8 @@ import '@fontsource/source-sans-3/400.css';
 import '@fontsource/source-sans-3/500.css';
 import '@fontsource/source-sans-3/700.css';
 
-import Widget from '@/layouts/Widget/Widget';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import TaskWidget from '@/layouts/TaskWidget/TaskWidget';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <ErrorBoundary>
         <GlobalStyle />
         <main>
-          <Widget />
+          <TaskWidget />
         </main>
       </ErrorBoundary>
     </ThemeProvider>

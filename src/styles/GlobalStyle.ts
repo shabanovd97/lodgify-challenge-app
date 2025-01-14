@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${({ theme }) => theme.fontSizes.normal};
     line-height: ${({ theme }) => theme.lineHeights.normal};
     color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme }) => theme.colors.lightBackground};
   }
 
   p {
