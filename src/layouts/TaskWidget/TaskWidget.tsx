@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 
-// import Accordion from '@/components/Accordion/Accordion';
 import Header from './Header/Header';
 import Content from './Content/Content';
 

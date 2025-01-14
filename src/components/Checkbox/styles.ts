@@ -37,8 +37,10 @@ export const CheckboxStyledInput = styled.div<{ checked: boolean }>`
     margin-top: -2px; // Centering the checkmark according to the Mockup
     width: ${({ theme }) => theme.spacing(1.1)};
     height: ${({ theme }) => theme.spacing(0.7)};
-    border-left: ${({ theme }) => `1px solid ${theme.colors.primaryBackground}`};
-    border-bottom: ${({ theme }) => `1px solid ${theme.colors.primaryBackground}`};
+    border-left: ${({ theme }) =>
+      `1px solid ${theme.colors.primaryBackground}`};
+    border-bottom: ${({ theme }) =>
+      `1px solid ${theme.colors.primaryBackground}`};
     rotate: -45deg;
     box-sizing: border-box;
   }
