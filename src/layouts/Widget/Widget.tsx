@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import Checkbox from '@/components/Checkbox/Checkbox';
 
-import { calculateProgress } from '@/utils/progress-helpers';
+import { calculateProgress, isGroupCompleted } from '@/utils/progress-helpers';
 import { GET_TASK_GROUPS_URL } from '@/constants';
 import { Task, TaskGroup } from '@/types/tasks-types';
 
@@ -79,6 +79,7 @@ export default function Widget() {
         {tasks.map((taskGroup) => (
           <section key={taskGroup.name}>
             <h2>{taskGroup.name}</h2>
+            <p>{`isCompleted: ${isGroupCompleted(taskGroup)}`}</p>
             <ul>
               {taskGroup.tasks.map((task) => (
                 <li key={task.description}>

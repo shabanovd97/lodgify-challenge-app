@@ -22,3 +22,7 @@ export function calculateProgress(tasks: TaskGroup[]) {
 
   return Math.round((tasksCheckedSum * 100) / tasksValuesSum) || 0;
 }
+
+export function isGroupCompleted(group: TaskGroup) {
+  return group.tasks.every((task) => task.checked);
+}

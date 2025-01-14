@@ -13,12 +13,15 @@ export const Progress = styled.div<{ percentage: number }>`
   align-items: center;
   justify-content: end;
   padding: ${({ theme, percentage }) =>
-    percentage > 5 ? `0 ${theme.spacing(2)}` : 0};
-  width: ${({ percentage }) => (percentage < 5 ? '5%' : `${percentage}%`)};
+    percentage > 0 ? `0 ${theme.spacing(2)}` : 0};
+  width: ${({ percentage }) => `${percentage}%`};
+  min-width: ${({ theme }) => theme.spacing(3)};
   height: ${({ theme }) => theme.spacing(3)};
   background-color: ${({ theme }) => theme.colors.primary};
   border-radius: ${({ theme }) => theme.spacing(3)};
-  transition: width 0.5s ease-in-out;
+  transition:
+    width 0.5s ease-in-out,
+    padding 0.5s ease-in-out;
 `;
 
 export const ProgressText = styled.span`
