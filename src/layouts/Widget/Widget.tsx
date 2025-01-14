@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
+import Checkbox from '@/components/Checkbox/Checkbox';
 
 import { calculateProgress } from '@/utils/progress-helpers';
 import { GET_TASK_GROUPS_URL } from '@/constants';
@@ -81,12 +82,11 @@ export default function Widget() {
             <ul>
               {taskGroup.tasks.map((task) => (
                 <li key={task.description}>
-                  <input
-                    type="checkbox"
+                  <Checkbox
+                    label={task.description}
                     checked={task.checked}
                     onChange={() => handelCheckboxChange(task)}
                   />
-                  <label>{task.description}</label>
                 </li>
               ))}
             </ul>

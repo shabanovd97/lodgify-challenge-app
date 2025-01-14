@@ -7,6 +7,7 @@ export const theme = {
     lightGrey: '#F2FBFA',
     lightGreen: '#E6FDF9',
     grey: '#CCCCCC',
+    black: '#000000',
   },
   fonts: {
     primary: "'Source Sans 3', Arial, sans-serif",
