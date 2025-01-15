@@ -1,10 +1,10 @@
-import { Progress, ProgressBarWrapper, ProgressText } from './styles';
+import {
+  ProgressBarIndicator,
+  ProgressBarText,
+  ProgressBarWrapper,
+} from './styles';
 
-interface ProgressBarProps {
-  progress: number;
-}
-
-export default function ProgressBar({ progress }: ProgressBarProps) {
+export default function ProgressBar({ progress }: { progress: number }) {
   return (
     <ProgressBarWrapper
       role="progressbar"
@@ -12,9 +12,9 @@ export default function ProgressBar({ progress }: ProgressBarProps) {
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      <Progress percentage={progress}>
-        <ProgressText>{`${progress}%`}</ProgressText>
-      </Progress>
+      <ProgressBarIndicator percentage={progress}>
+        <ProgressBarText>{`${progress}%`}</ProgressBarText>
+      </ProgressBarIndicator>
     </ProgressBarWrapper>
   );
 }

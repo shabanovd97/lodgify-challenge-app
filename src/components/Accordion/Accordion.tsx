@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import AccordionIcon from '@/assets/icons/booking-features.svg?react';
 import AccordionIconCompleted from '@/assets/icons/booking-ok.svg?react';
@@ -19,7 +19,7 @@ import {
 interface AccordionProps {
   title: string;
   completed?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function Accordion({

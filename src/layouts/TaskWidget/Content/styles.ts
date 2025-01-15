@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const TasksList = styled.ul`
+export const TaskList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(1)};

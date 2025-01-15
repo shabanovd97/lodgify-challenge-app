@@ -1,17 +1,39 @@
 import Checkbox from '@/components/Checkbox/Checkbox';
 import Accordion from '@/components/Accordion/Accordion';
 
-import { TasksList } from './style';
+import { TaskList } from './styles';
 
-import { Task, TaskGroup } from '@/types/tasks-types';
+import { useTaskWidgetContext } from '@/layouts/TaskWidget/hooks/context-hooks';
+
+import { Task } from '@/types/tasks-types';
 import { isGroupCompleted } from '@/utils/progress-helpers';
 
-interface ContentProps {
-  tasks: TaskGroup[];
-  onChangeTask: (task: Task) => void;
-}
+export default function Content() {
+  const { tasks, setTasks } = useTaskWidgetContext();
 
-export default function Content({ tasks, onChangeTask }: ContentProps) {
+  function handelCheckboxChange(selectedTask: Task) {
+    const updatedTaskGroups = tasks.map((taskGroup) => {
+      const updatedTasks = taskGroup.tasks.map((currentTask) => {
+        // while we haven't unique keys, and assuming that descriptions are unique -> we can search tasks by description
+        if (currentTask.description === selectedTask.description) {
+          return {
+            ...currentTask,
+            checked: !currentTask.checked,
+          };
+        }
+
+        return currentTask;
+      });
+
+      return {
+        ...taskGroup,
+        tasks: updatedTasks,
+      };
+    });
+
+    setTasks(updatedTaskGroups);
+  }
+
   return (
     <>
       {tasks.map((taskGroup) => (
@@ -20,7 +42,7 @@ export default function Content({ tasks, onChangeTask }: ContentProps) {
           title={taskGroup.name}
           completed={isGroupCompleted(taskGroup)}
         >
-          <TasksList>
+          <TaskList>
             {taskGroup.tasks.map((task) => (
               <li
                 key={task.description} // here is the same situation, we can use description as a key
@@ -28,11 +50,11 @@ export default function Content({ tasks, onChangeTask }: ContentProps) {
                 <Checkbox
                   label={task.description}
                   checked={task.checked}
-                  onChange={() => onChangeTask(task)}
+                  onChange={() => handelCheckboxChange(task)}
                 />
               </li>
             ))}
-          </TasksList>
+          </TaskList>
         </Accordion>
       ))}
     </>

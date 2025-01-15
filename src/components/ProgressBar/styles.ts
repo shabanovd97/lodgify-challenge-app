@@ -8,7 +8,7 @@ export const ProgressBarWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const Progress = styled.div<{ percentage: number }>`
+export const ProgressBarIndicator = styled.div<{ percentage: number }>`
   display: flex;
   align-items: center;
   justify-content: end;
@@ -25,7 +25,7 @@ export const Progress = styled.div<{ percentage: number }>`
     padding 0.5s ease-in-out;
 `;
 
-export const ProgressText = styled.span`
+export const ProgressBarText = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   color: ${({ theme }) => theme.colors.lightPrimaryText};
 `;
