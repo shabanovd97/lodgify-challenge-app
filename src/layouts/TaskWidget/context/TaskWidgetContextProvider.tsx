@@ -22,6 +22,8 @@ export default function TaskWidgetContextProvider({
       try {
         const response = await fetch(GET_TASK_GROUPS_URL);
         const data = await response.json();
+        // artificial delay to emulate real api call *NONE PRODUCTION CODE*
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
         setTasks(data);
       } catch (error) {

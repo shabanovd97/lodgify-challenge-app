@@ -11,6 +11,7 @@ export const theme = {
     primaryBackground: '#FFFFFF',
     secondaryBackground: '#EEEEEE',
     error: '#EB4734',
+    errorBackground: '#F9C5C0',
   },
   fonts: {
     primary: "'Source Sans 3', Arial, sans-serif",

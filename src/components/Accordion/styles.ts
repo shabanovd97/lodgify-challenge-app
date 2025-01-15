@@ -71,7 +71,7 @@ export const AccordionExpand = styled.div`
     color: ${({ theme }) => theme.colors.primaryText};
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 430px) {
     & {
       display: none;
     }
