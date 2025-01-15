@@ -2,6 +2,19 @@ import styled from 'styled-components';
 
 export const AccordionWrapper = styled.details`
   border: 1px solid ${({ theme }) => theme.colors.secondaryBorder};
+  border-top: none;
+  border-radius: 0;
+
+  &:first-of-type {
+    border-top: 1px solid ${({ theme }) => theme.colors.secondaryBorder};
+    border-top-left-radius: ${({ theme }) => theme.spacing(1)};
+    border-top-right-radius: ${({ theme }) => theme.spacing(1)};
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: ${({ theme }) => theme.spacing(1)};
+    border-bottom-right-radius: ${({ theme }) => theme.spacing(1)};
+  }
 
   & + & {
     margin-top: -1px;
@@ -72,11 +85,7 @@ export enum DirectionType {
   left = 'left',
 }
 
-interface ChevronProps {
-  direction: DirectionType;
-}
-
-export const Chevron = styled.div<ChevronProps>`
+export const Chevron = styled.div<{ direction: DirectionType }>`
   height: ${({ theme }) => theme.spacing(1)};
   width: ${({ theme }) => theme.spacing(1)};
   margin-top: -4px; // Centering chevron according to the Mockup
