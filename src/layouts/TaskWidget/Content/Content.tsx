@@ -4,6 +4,7 @@ import { ContentWrapper } from './style';
 
 import { Task, TaskGroup } from '@/types/tasks-types';
 import { isGroupCompleted } from '@/utils/progress-helpers';
+import Accordion from '@/components/Accordion/Accordion';
 
 interface ContentProps {
   tasks: TaskGroup[];
@@ -14,9 +15,11 @@ export default function Content({ tasks, onChangeTask }: ContentProps) {
   return (
     <ContentWrapper>
       {tasks.map((taskGroup) => (
-        <section key={taskGroup.name}>
-          <h2>{taskGroup.name}</h2>
-          <p>{`isCompleted: ${isGroupCompleted(taskGroup)}`}</p>
+        <Accordion
+          key={taskGroup.name}
+          title={taskGroup.name}
+          completed={isGroupCompleted(taskGroup)}
+        >
           <ul>
             {taskGroup.tasks.map((task) => (
               <li key={task.description}>
@@ -28,7 +31,7 @@ export default function Content({ tasks, onChangeTask }: ContentProps) {
               </li>
             ))}
           </ul>
-        </section>
+        </Accordion>
       ))}
     </ContentWrapper>
   );

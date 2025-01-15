@@ -43,11 +43,13 @@ export const AccordionTitleIcon = styled.div`
   height: ${({ theme }) => theme.spacing(2)};
 `;
 
-export const AccordionTitleText = styled.h2`
+export const AccordionTitleText = styled.h2<{ completed: boolean }>`
   margin: 0;
   font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   line-height: ${({ theme }) => theme.lineHeights.medium};
+  color: ${({ theme, completed }) =>
+    completed ? theme.colors.primary : theme.colors.primaryText};
 `;
 
 export const AccordionExpand = styled.div`

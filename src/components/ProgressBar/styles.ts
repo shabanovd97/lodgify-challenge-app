@@ -13,7 +13,7 @@ export const Progress = styled.div<{ percentage: number }>`
   align-items: center;
   justify-content: end;
   padding: ${({ theme, percentage }) =>
-    percentage > 0 ? `0 ${theme.spacing(2)}` : 0};
+    percentage > 3 ? `0 ${theme.spacing(2)}` : 0};
   width: ${({ percentage }) => `${percentage}%`};
   min-width: ${({ theme }) => theme.spacing(3)};
   height: ${({ theme }) => theme.spacing(3)};

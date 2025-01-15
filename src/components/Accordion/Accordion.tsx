@@ -40,7 +40,7 @@ export default function Accordion({
           <AccordionTitleIcon>
             {completed ? <AccordionIconCompleted /> : <AccordionIcon />}
           </AccordionTitleIcon>
-          <AccordionTitleText>{title}</AccordionTitleText>
+          <AccordionTitleText completed={completed}>{title}</AccordionTitleText>
         </AccordionTitle>
         <AccordionExpand>
           <span>{open ? 'Hide' : 'Show'}</span>
