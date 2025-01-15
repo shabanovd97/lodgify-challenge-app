@@ -1,10 +1,10 @@
 import Checkbox from '@/components/Checkbox/Checkbox';
+import Accordion from '@/components/Accordion/Accordion';
 
-import { ContentWrapper } from './style';
+import { TasksList } from './style';
 
 import { Task, TaskGroup } from '@/types/tasks-types';
 import { isGroupCompleted } from '@/utils/progress-helpers';
-import Accordion from '@/components/Accordion/Accordion';
 
 interface ContentProps {
   tasks: TaskGroup[];
@@ -13,16 +13,18 @@ interface ContentProps {
 
 export default function Content({ tasks, onChangeTask }: ContentProps) {
   return (
-    <ContentWrapper>
+    <>
       {tasks.map((taskGroup) => (
         <Accordion
-          key={taskGroup.name}
+          key={taskGroup.name} // while we haven't unique keys, and assuming that names are unique -> we can use name as a key
           title={taskGroup.name}
           completed={isGroupCompleted(taskGroup)}
         >
-          <ul>
+          <TasksList>
             {taskGroup.tasks.map((task) => (
-              <li key={task.description}>
+              <li
+                key={task.description} // here is the same situation, we can use description as a key
+              >
                 <Checkbox
                   label={task.description}
                   checked={task.checked}
@@ -30,9 +32,9 @@ export default function Content({ tasks, onChangeTask }: ContentProps) {
                 />
               </li>
             ))}
-          </ul>
+          </TasksList>
         </Accordion>
       ))}
-    </ContentWrapper>
+    </>
   );
 }

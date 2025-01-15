@@ -1,11 +1,11 @@
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 
-import { HeaderWrapper } from './style';
+import { HeaderText, HeaderWrapper } from './style';
 
 export default function Header({ progress }: { progress: number }) {
   return (
     <HeaderWrapper>
-      <h1>Lodgify Grouped Tasks</h1>
+      <HeaderText>Lodgify Grouped Tasks</HeaderText>
       <ProgressBar progress={progress} />
     </HeaderWrapper>
   );

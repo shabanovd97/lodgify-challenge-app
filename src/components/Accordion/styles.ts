@@ -70,6 +70,12 @@ export const AccordionExpand = styled.div`
   &:hover {
     color: ${({ theme }) => theme.colors.primaryText};
   }
+
+  @media (max-width: 320px) {
+    & {
+      display: none;
+    }
+  }
 `;
 
 export const AccordionExpandIcon = styled.div`

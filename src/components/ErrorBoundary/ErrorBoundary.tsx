@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 
+import { ErrorContainer } from './styles';
+
 interface Props {
   children: ReactNode;
 }
@@ -24,7 +26,11 @@ export default class ErrorBoundary extends React.Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return <div>Something went wrong. Please try again later.</div>;
+      return (
+        <ErrorContainer>
+          Something went wrong. Please try again later.
+        </ErrorContainer>
+      );
     }
 
     return this.props.children;

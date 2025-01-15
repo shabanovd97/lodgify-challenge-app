@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export const CheckboxWrapper = styled.div`
+export const CheckboxWrapper = styled.fieldset`
+  margin: 0;
   padding: ${({ theme }) => theme.spacing(2)};
+  border: none;
 `;
 
 export const CheckboxHiddenInput = styled.input.attrs({ type: 'checkbox' })`

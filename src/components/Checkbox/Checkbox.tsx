@@ -33,7 +33,9 @@ export default function Checkbox({ label, checked, onChange }: CheckboxProps) {
       />
       <CheckboxContent htmlFor={label}>
         <CheckboxStyledInput
+          role="checkbox"
           checked={checked}
+          aria-checked={checked}
           // onClick={handleCheckBoxClick}
         />
         <CheckboxLabel>{label}</CheckboxLabel>

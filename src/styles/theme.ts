@@ -10,6 +10,7 @@ export const theme = {
     secondaryBorder: '#DDDDDD',
     primaryBackground: '#FFFFFF',
     secondaryBackground: '#EEEEEE',
+    error: '#EB4734',
   },
   fonts: {
     primary: "'Source Sans 3', Arial, sans-serif",
