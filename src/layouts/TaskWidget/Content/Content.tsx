@@ -5,52 +5,43 @@ import { TaskList } from './styles';
 
 import { useTaskWidgetContext } from '@/layouts/TaskWidget/hooks/context-hooks';
 
-import { Task } from '@/types/tasks-types';
 import { isGroupCompleted } from '@/utils/progress-helpers';
 
 export default function Content() {
   const { tasks, setTasks } = useTaskWidgetContext();
 
-  function handelCheckboxChange(selectedTask: Task) {
-    const updatedTaskGroups = tasks.map((taskGroup) => {
-      const updatedTasks = taskGroup.tasks.map((currentTask) => {
-        // while we haven't unique keys, and assuming that descriptions are unique -> we can search tasks by description
-        if (currentTask.description === selectedTask.description) {
-          return {
-            ...currentTask,
-            checked: !currentTask.checked,
-          };
-        }
-
-        return currentTask;
-      });
-
-      return {
+  function handleCheckboxChange(selectedTaskId: string) {
+    setTasks((prevTasks) =>
+      prevTasks.map((taskGroup) => ({
         ...taskGroup,
-        tasks: updatedTasks,
-      };
-    });
-
-    setTasks(updatedTaskGroups);
+        tasks: taskGroup.tasks.map((currentTask) =>
+          currentTask.description === selectedTaskId // while we haven't unique keys, and assuming that descriptions are unique -> we can search tasks by description
+            ? { ...currentTask, checked: !currentTask.checked }
+            : currentTask
+        ),
+      }))
+    );
   }
 
   return (
     <>
-      {tasks.map((taskGroup) => (
+      {tasks.map(({ name, tasks }) => (
         <Accordion
-          key={taskGroup.name} // while we haven't unique keys, and assuming that names are unique -> we can use name as a key
-          title={taskGroup.name}
-          completed={isGroupCompleted(taskGroup)}
+          // while we haven't unique keys, and assuming that names are unique -> we can use name as a key
+          key={name}
+          title={name}
+          completed={isGroupCompleted(tasks)}
         >
           <TaskList>
-            {taskGroup.tasks.map((task) => (
+            {tasks.map(({ description, checked }) => (
               <li
-                key={task.description} // here is the same situation, we can use description as a key
+                // here is the same situation, we can use description as a key
+                key={description}
               >
                 <Checkbox
-                  label={task.description}
-                  checked={task.checked}
-                  onChange={() => handelCheckboxChange(task)}
+                  label={description}
+                  checked={checked}
+                  onChange={() => handleCheckboxChange(description)}
                 />
               </li>
             ))}

@@ -22,6 +22,7 @@ export default function Header() {
   return (
     <HeaderWrapper>
       <HeaderText>Lodgify Grouped Tasks</HeaderText>
+
       {loading && (
         <LoaderWrapper>
           <Loader />

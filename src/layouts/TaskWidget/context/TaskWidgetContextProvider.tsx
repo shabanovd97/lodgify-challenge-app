@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import { TaskWidgetContext } from './TaskWidgetContext';
 
@@ -15,31 +15,37 @@ export default function TaskWidgetContextProvider({
   const [tasks, setTasks] = useState<TaskGroup[]>([]);
   const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    async function fetchTasks() {
-      setLoading(true);
+  const fetchTasks = useCallback(async () => {
+    setLoading(true);
+    setError(null);
 
-      try {
-        const response = await fetch(GET_TASK_GROUPS_URL);
-        const data = await response.json();
-        // artificial delay to emulate real api call *NONE PRODUCTION CODE*
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch(GET_TASK_GROUPS_URL);
 
-        setTasks(data);
-      } catch (error) {
-        setError(
-          new Error(
-            'An error occurred while fetching the tasks. Please try again later.'
-          )
-        );
-        console.error(error);
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
       }
-    }
 
-    fetchTasks();
+      const data = await response.json();
+      // artificial delay to emulate real api call *NONE PRODUCTION CODE*
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      setTasks(data);
+    } catch (error) {
+      setError(
+        new Error(
+          'An error occurred while fetching the tasks. Please try again later.'
+        )
+      );
+      console.error('Error fetching tasks: ', error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   return (
     <TaskWidgetContext.Provider value={{ tasks, setTasks, loading, error }}>

@@ -1,10 +1,10 @@
-import { createContext } from 'react';
+import { Dispatch, SetStateAction, createContext } from 'react';
 
 import { TaskGroup } from '@/types/tasks-types';
 
 interface TaskWidgetContextType {
   tasks: TaskGroup[];
-  setTasks: (tasks: TaskGroup[]) => void;
+  setTasks: Dispatch<SetStateAction<TaskGroup[]>>;
   loading: boolean;
   error: Error | null;
 }
