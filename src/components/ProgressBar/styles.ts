@@ -8,7 +8,9 @@ export const ProgressBarWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const ProgressBarIndicator = styled.div<{ percentage: number }>`
+export const ProgressBarIndicator = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'percentage',
+})<{ percentage: number }>`
   display: flex;
   align-items: center;
   justify-content: end;

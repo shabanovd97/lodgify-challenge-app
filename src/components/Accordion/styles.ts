@@ -43,7 +43,9 @@ export const AccordionTitleIcon = styled.div`
   height: ${({ theme }) => theme.spacing(2)};
 `;
 
-export const AccordionTitleText = styled.h2<{ completed: boolean }>`
+export const AccordionTitleText = styled.h2.withConfig({
+  shouldForwardProp: (prop) => prop !== 'completed',
+})<{ completed: boolean }>`
   margin: 0;
   font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
