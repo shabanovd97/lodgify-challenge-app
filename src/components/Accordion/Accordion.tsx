@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import AccordionIcon from '@/assets/icons/booking-features.svg?react';
 import AccordionIconCompleted from '@/assets/icons/booking-ok.svg?react';
@@ -28,14 +28,24 @@ export default function Accordion({
   children,
 }: AccordionProps) {
   const [open, setOpen] = useState<boolean>(false);
+  const detailsRef = useRef<HTMLDetailsElement>(null);
 
-  function handleToggle() {
+  useEffect(() => {
+    if (detailsRef.current) {
+      if (detailsRef.current.open !== open) {
+        detailsRef.current.open = open;
+      }
+    }
+  }, [open]);
+
+  function handleOpen(e: React.MouseEvent<HTMLDetailsElement>) {
+    e.preventDefault();
     setOpen((prev) => !prev);
   }
 
   return (
-    <AccordionWrapper open={open} onToggle={handleToggle}>
-      <AccordionSummary>
+    <AccordionWrapper ref={detailsRef} open={open}>
+      <AccordionSummary onClick={handleOpen}>
         <AccordionTitle>
           <AccordionTitleIcon>
             {completed ? <AccordionIconCompleted /> : <AccordionIcon />}

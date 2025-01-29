@@ -30,4 +30,5 @@ export const ProgressBarIndicator = styled.div.withConfig({
 export const ProgressBarText = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   color: ${({ theme }) => theme.colors.lightPrimaryText};
+  user-select: none;
 `;

@@ -33,6 +33,7 @@ export const AccordionTitle = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
+  user-select: none;
 `;
 
 export const AccordionTitleIcon = styled.div`
@@ -54,7 +55,7 @@ export const AccordionTitleText = styled.h2.withConfig({
     completed ? theme.colors.primary : theme.colors.primaryText};
 `;
 
-export const AccordionExpand = styled.div`
+export const AccordionExpand = styled.button`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(1)};
