@@ -1,7 +1,14 @@
 # Release Notes
 
-## [v1.0.0] - 2025.01.16
+## [v1.1.0] - 04.02.2025
+
+### Added
+- Added gh-pages deployment
+
+### Fixed
+- Fixed Accordion component's state synchronization with native HTML details element
+
+## [v1.0.0] - 16.01.2025
 
 ### First major release
-
-- increment release version
+- Added all necessary functionality for the initial release
