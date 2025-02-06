@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 
 import AccordionIcon from '@/assets/icons/booking-features.svg?react';
 import AccordionIconCompleted from '@/assets/icons/booking-ok.svg?react';
@@ -18,16 +18,19 @@ import {
 
 interface AccordionProps {
   title: string;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<string | null>>;
   completed?: boolean;
   children: ReactNode;
 }
 
 export default function Accordion({
   title,
+  open,
+  setOpen,
   completed = false,
   children,
 }: AccordionProps) {
-  const [open, setOpen] = useState<boolean>(false);
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export default function Accordion({
 
   function handleOpen(e: React.MouseEvent<HTMLDetailsElement>) {
     e.preventDefault();
-    setOpen((prev) => !prev);
+    setOpen((prev) => (prev !== title ? title : null));
   }
 
   return (

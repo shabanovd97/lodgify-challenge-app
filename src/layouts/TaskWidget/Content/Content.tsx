@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Checkbox from '@/components/Checkbox/Checkbox';
 import Accordion from '@/components/Accordion/Accordion';
 
@@ -9,6 +11,7 @@ import { isGroupCompleted } from '@/utils/progress-helpers';
 
 export default function Content() {
   const { tasks, setTasks } = useTaskWidgetContext();
+  const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
 
   function handleCheckboxChange(selectedTaskId: string) {
     setTasks((prevTasks) =>
@@ -30,6 +33,8 @@ export default function Content() {
           // while we haven't unique keys, and assuming that names are unique -> we can use name as a key
           key={name}
           title={name}
+          open={expandedGroup === name}
+          setOpen={setExpandedGroup}
           completed={isGroupCompleted(tasks)}
         >
           <TaskList>
